@@ -1,23 +1,11 @@
-<input type="text" id="new-todo" placeholder="What needs to be done?" />
+{{input type="text" id="new-todo" placeholder="What needs to be done?"
+    value=newTitle action="createTodo"}}
 
-<section id="main">
-    <ul id="todo-list">
-        <li class="completed">
-            <input type="checkbox" class="toggle">
-            <label>Learn Ember</label><button class="destroy"></button>
-        </li>
-        <li>
-            <input type="checkbox" class="toggle">
-            <label>...</label><button class="destroy"></button>
-        </li>
-        <li>
-            <input type="checkbox" class="toggle">
-            <label>Profit!</label><button class="destroy"></button>
-        </li>
-    </ul>
-
-    <input type="checkbox" id="toggle-all">
-</section>
+<ul id="todo-list">
+    {{#each todo in model}}
+        {{todo-item acceptChanges="acceptChanges" deleteTodo="deleteTodo" todo=todo}}
+    {{/each}}
+</ul>
 
 <footer id="footer">
     <span id="todo-count">
@@ -25,13 +13,13 @@
     </span>
     <ul id="filters">
         <li>
-            <a href="all" class="selected">All</a>
+            <a href="/#" class="selected">All</a>
         </li>
         <li>
-            <a href="active">Active</a>
+            <a href="/#">Active</a>
         </li>
         <li>
-            <a href="completed">Completed</a>
+            <a href="/#">Completed</a>
         </li>
     </ul>
 
